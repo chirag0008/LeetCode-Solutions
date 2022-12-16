@@ -1,0 +1,14 @@
+ListNode* deleteDuplicates(ListNode* head) {
+        ListNode* tmp=head;
+        while(tmp && tmp->next){
+            if(tmp->val==tmp->next->val){
+                ListNode* tobeDel=tmp->next;
+                tmp->next=tmp->next->next;
+                delete tobeDel;
+            }
+            else{
+                tmp=tmp->next;
+            }
+        }
+        return head;
+    }
