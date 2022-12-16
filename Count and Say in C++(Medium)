@@ -1,0 +1,29 @@
+string countAndSay(int n) {
+        string s="1";
+       if(n==1){
+           return s;
+       }
+       else if(n>1){
+           int r=1;
+           while(r<n){
+               string tmp="";
+                s+='$';
+                 int cnt=1;
+           for(int i=1;i<s.length();i++){
+               if(s[i]==s[i-1]){
+                   cnt++;
+               }
+               else{
+                //    cout<<cnt<<endl;
+                   tmp+=to_string(cnt);
+                   tmp+=s[i-1];
+                   cnt=1;
+               }
+           }
+           s=tmp;
+        //    cout<<s<<" ";
+           r++;
+                }
+       }
+       return s;
+       }
