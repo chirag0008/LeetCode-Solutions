@@ -1,0 +1,28 @@
+int trap(vector<int>& height) {
+        int n=height.size();
+        vector<int> leftSide(n);
+        vector<int> rightSide(n);
+        leftSide[0]=height[0];
+        rightSide[n-1]=height[n-1];
+        for(int i=1;i<n;i++){
+            if(leftSide[i-1]>height[i]){
+                leftSide[i]=leftSide[i-1];
+            }
+            else{
+                leftSide[i]=height[i];
+            }
+        }
+       for(int j=n-2;j>=0;j--){
+            if(height[j]<rightSide[j+1]){
+                rightSide[j]=rightSide[j+1];
+            }
+            else{
+                rightSide[j]=height[j];
+            }
+        }
+        int ans=0;
+   for(int i=1;i<n-1;i++){
+       ans+=(min(leftSide[i],rightSide[i]))-height[i];
+   }
+        return ans;     
+    }
