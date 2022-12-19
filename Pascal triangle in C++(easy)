@@ -1,0 +1,33 @@
+vector<vector<int>> generate(int numRows) {
+        vector<vector<int>>v;
+        if(numRows==1){
+            vector<int>a={1};
+            v.push_back(a);
+            return v;
+        }
+        else if(numRows==2){
+            vector<int>a={1};
+            vector<int>b={1,1};
+            v.push_back(a);
+            v.push_back(b);
+            return v;
+        }
+        else{
+            vector<int>a={1};
+            vector<int>b={1,1};
+            v.push_back(a);
+            v.push_back(b);
+            for(int i=3;i<=numRows;i++){
+                vector<int>c(i);
+                c[0]=1;
+                c[i-1]=1;
+                int p=1;
+                while(p<i-1){
+                    c[p++]=v[i-2][p]+v[i-2][p-1];
+                }
+                v.push_back(c);
+            }
+
+        }
+        return v;
+    }
