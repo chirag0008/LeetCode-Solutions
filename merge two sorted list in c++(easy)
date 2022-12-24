@@ -1,0 +1,50 @@
+ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        ListNode* flisthead=NULL;ListNode* flisttail=NULL;
+        while(list1!=NULL && list2!=NULL){
+            if(list1->val<=list2->val){
+                if(flisthead==NULL){
+                    flisthead=new ListNode(list1->val); 
+                    flisttail=flisthead;
+                }
+                else{
+                    flisttail->next=new ListNode(list1->val);
+                    flisttail=flisttail->next;
+                }
+                list1=list1->next;
+            }
+            else{
+                if(flisthead==NULL){
+                    flisthead=new ListNode(list2->val); 
+                    flisttail=flisthead;
+                }
+                else{
+                    flisttail->next=new ListNode(list2->val);
+                    flisttail=flisttail->next;
+                }
+                list2=list2->next;
+            }
+        }
+        while(list1!=NULL){
+            if(flisthead!=NULL){
+            flisttail->next=new ListNode(list1->val);
+            flisttail=flisttail->next;
+            }
+            else{
+                flisthead=new ListNode(list1->val);
+                flisttail=flisthead;
+            }
+              list1=list1->next;
+        }
+        while(list2!=NULL){
+            if(flisthead!=NULL){
+            flisttail->next=new ListNode(list2->val);
+            flisttail=flisttail->next;
+            }
+            else{
+                flisthead=new ListNode(list2->val);
+                flisttail=flisthead;
+            }
+             list2=list2->next;
+        }
+        return flisthead;
+    }
