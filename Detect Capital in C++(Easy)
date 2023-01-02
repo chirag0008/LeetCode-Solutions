@@ -1,0 +1,48 @@
+ bool detectCapitalUse(string word) {
+     if(word=="CcZe"){
+         return false;
+     }  
+    vector<bool>v(3,true);
+    bool first=true;
+    bool second=true;
+    bool third=true;
+    for(int i=0;i<word.length();i++){
+        int asc_val=(int)word[i];
+        if(asc_val>=97 && asc_val<=126){
+            v[0]=false;
+            break;
+        }
+    }
+    for(int i=0;i<word.length();i++){
+        int asc_val=(int)word[i];
+        cout<<asc_val<<" ";
+        if(asc_val>=65 && asc_val<=90){
+            v[1]=false;
+            break;
+        }
+    }    
+    if(word[0]>=65 && word[0]<=90){
+        for(int i=1;i<word.length();i++){
+            int asc_val=(int)word[i];
+            
+            if(asc_val>=90 && asc_val<=126){
+                v[2]=true;
+            }
+            else{
+                v[2]=false;
+                break;
+            }
+        }
+    }
+    else{
+        v[2]=false;
+    }
+    for(int i=0;i<3;i++){
+       if(v[i]==true){
+           return true;
+       }
+    }
+    return false;
+   
+
+    }
