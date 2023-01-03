@@ -1,0 +1,12 @@
+int missingNumber(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+       int max_ele=*max_element(nums.begin(),nums.end());
+       int ans;
+       for(int i=0;i<=max_ele;i++){
+           if(i!=nums[i]){
+               ans=i;
+               break;
+           }
+       }
+       return ans;
+    }
