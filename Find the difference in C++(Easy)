@@ -1,0 +1,16 @@
+ char findTheDifference(string s, string t) {
+    unordered_map<char,int>m;
+    for(int i=0;i<s.length();i++){
+        m[s[i]]++;
+    }
+    for(int j=0;j<t.length();j++){
+        m[t[j]]--;
+    }
+    char ans;
+    for(auto x:m){
+        if(x.second<0){
+            ans=x.first;
+            }    
+        }
+        return ans;
+    }
