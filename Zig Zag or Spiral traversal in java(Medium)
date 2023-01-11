@@ -1,0 +1,34 @@
+public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        boolean ltor=true;
+        Queue<TreeNode> queue=new LinkedList<>();
+        List<List<Integer>>ans=new LinkedList<>();
+        if(root==null){
+            return ans;
+        }
+        queue.offer(root);
+        while(!queue.isEmpty()){
+            int n=queue.size();
+            List<Integer>tmp=new LinkedList<>();
+            int p=0;
+            int q=n-1;
+            for(int i=0;i<n;i++){
+                root=queue.peek();
+                if(root.left!=null){
+                    queue.offer(root.left);
+                }
+                if(root.right!=null){
+                    queue.offer(root.right);
+                }
+               tmp.add(queue.poll().val);
+            }
+            if(ltor){
+                ans.add(tmp);
+            }
+            else{
+                Collections.reverse(tmp);
+                ans.add(tmp);
+            }
+            ltor=!ltor;
+        }
+        return ans;
+    }
