@@ -1,0 +1,40 @@
+class Pair{
+     TreeNode node;
+     int lvl;
+     Pair(TreeNode _node,int _lvl){
+         node=_node;
+         lvl=_lvl;
+     }
+ }
+class Solution {
+    public List<Integer> rightSideView(TreeNode root) {
+        List<Integer>ans=new ArrayList<>();
+        if(root==null){
+            return ans;
+        }
+        Map<Integer,Integer>map=new TreeMap<>();
+        Queue<Pair>q=new LinkedList<>();
+        int lvl=0;
+        q.add(new Pair(root,lvl));
+        while(!q.isEmpty()){
+           Pair it=q.remove();
+           lvl=it.lvl;
+           TreeNode temp=it.node;
+           if(map.get(lvl)==null){
+               map.put(lvl,temp.val);
+           }
+           if(temp.right!=null){
+               q.add(new Pair(temp.right,lvl+1));
+           }
+           if(temp.left!=null){
+               q.add(new Pair(temp.left,lvl+1));
+           }
+
+        }
+        for(Map.Entry<Integer,Integer>entry:map.entrySet()){
+            ans.add(entry.getValue());
+        }
+        return ans;
+
+    }
+}
