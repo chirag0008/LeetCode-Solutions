@@ -1,0 +1,26 @@
+public class Solution {
+    public boolean getPath(TreeNode A,ArrayList<Integer>ans,int B){
+        if(A==null){
+            return false;
+        }
+        ans.add(A.val);
+        if(A.val==B){
+            return true;
+        }
+        if(getPath(A.left,ans,B) || getPath(A.right,ans,B)){
+            return true;
+        }
+        ans.remove(ans.size()-1);
+        return false;
+        
+        
+    }
+    public ArrayList<Integer> solve(TreeNode A, int B) {
+        ArrayList<Integer>ans=new ArrayList<>();
+        if(A==null){
+            return ans;
+        }
+        getPath(A,ans,B);
+        return ans;
+    }
+}
