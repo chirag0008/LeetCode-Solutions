@@ -4,7 +4,7 @@
        while(curr!=null){
            if(curr.left==null){
                ans.add(curr.val);
-               curr=curr.next;
+               curr=curr.right;
            }
            else{
                Node prev=curr.left;
