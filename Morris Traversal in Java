@@ -1,0 +1,24 @@
+    ArrayList<Integer> morrisTraversalInorder(Node node) {
+       ArrayList<Integer>ans=new ArrayList<>();
+       Node curr=node;
+       while(curr!=null){
+           if(curr.left==null){
+               ans.add(curr.val);
+               curr=curr.next;
+           }
+           else{
+               Node prev=curr.left;
+               while(prev.right && prev.right!=curr){
+                   prev=prev.right;
+               }
+               if(prev.right==null){
+                   prev.right=curr;
+                   curr=curr.left;
+               }
+               else{
+                   prev.right=null;
+                   ans.add(curr.val);
+                   curr=curr.next;
+               }
+           }
+       }
