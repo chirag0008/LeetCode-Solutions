@@ -1,0 +1,28 @@
+ public boolean findTarget(TreeNode root, int k) {
+       ArrayList<Integer>ans=new ArrayList<>();
+       inorderTraversal(root,ans);
+       int start=0;
+       int end=ans.size()-1;
+       while(start<end){
+           int sum=ans.get(start)+ans.get(end);
+           if(sum==k){
+               return true;
+           }            
+           else if(sum>k){
+               end--;
+           }
+           else{
+              start++;
+           }
+       }
+     return false;
+
+    }
+    public void inorderTraversal(TreeNode root,ArrayList<Integer>ans){
+        if(root==null){
+            return;
+        }
+        inorderTraversal(root.left,ans);
+        ans.add(root.val);
+        inorderTraversal(root.right,ans);
+    }
