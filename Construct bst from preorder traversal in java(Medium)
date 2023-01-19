@@ -1,0 +1,12 @@
+ public TreeNode bstFromPreorder(int[] preorder) {
+        return bstFromPreorder(preorder,Long.MAX_VALUE,new int[1]);
+    }
+    public TreeNode bstFromPreorder(int[] preorder,long ub,int[] i){
+        if(i[0]==preorder.length || preorder[i[0]]>ub){
+            return null;
+        }
+        TreeNode root=new TreeNode(preorder[i[0]++]);
+        root.left=bstFromPreorder(preorder,root.val,i);
+        root.right=bstFromPreorder(preorder,ub,i);
+        return root;
+    }
